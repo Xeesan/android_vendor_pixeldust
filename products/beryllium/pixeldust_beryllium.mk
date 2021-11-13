@@ -24,16 +24,11 @@ export TARGET_DEVICE := beryllium
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
+# Face Unlock
+$(call inherit-product-if-exists, external/motorola/faceunlock/faceunlock.mk)
+
 # Include optional stuff (e.g. prebuilt apps)
 include vendor/pixeldust/configs/system_optional.mk
-
-# Google Apps
-$(call inherit-product-if-exists, vendor/gapps/gapps.mk)
-REMOVE_GAPPS_PACKAGES += \
-    GoogleCamera \
-    NexusLauncherRelease
-
-# Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_beryllium
 PRODUCT_DEVICE := beryllium
 PRODUCT_BRAND := Xiaomi
@@ -49,5 +44,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi-rev1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.pixeldust.maintainer="Dev" \
+    ro.pixeldust.maintainer="Xisan" \
     ro.pixeldust.device="beryllium"
